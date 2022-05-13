@@ -1,0 +1,100 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    //----------
+    id 'com.google.gms.google-services'
+    id 'com.google.firebase.crashlytics'
+}
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    compileSdkVersion rootProject.compileSdkVersion
+
+    defaultConfig {
+        applicationId "com.example.android.hilt.lean"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+
+        versionCode 1            //111111
+        versionName "1.0"        // "XXX"
+//        archivesBaseName = "Ace_${versionName}"
+//        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+
+        buildConfigField("String", "oneSignalId", "\"${onesignal_app_id}\"")
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.incremental"] = "true"
+            }
+        }
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            applicationIdSuffix = ".Debug"
+            versionNameSuffix = '_Debug'
+            buildConfigField("String", "URL_HOST", "\"${URL_HOST_DeBUG}\"")
+            resValue "string", "App_Name", "hilt.lean_Debug"
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            shrinkResources = true// 移除未使用的code, 簡化apk
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "URL_HOST", "\"${URL_HOST}\"")
+            resValue "string", "App_Name", "hilt.lea"
+        }
+    }
+
+
+    applicationVariants.all { variant ->
+        variant.outputs.all {//android studio3.0的写法
+            if (variant.buildType.name == 'debug') {
+                outputFileName = "${project.archivesBaseName}_Test.apk"
+            } else {
+                outputFileName = "${project.archivesBaseName}.apk"
+            }
+        }
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
+    kotlinOptions { jvmTarget = '1.8' }
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+}
+
+dependencies {
+//    Firebase
+    implementation platform('com.google.firebase:firebase-bom:30.0.0')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
+    // Room
+    implementation 'androidx.room:room-runtime:2.4.2'
+    kapt 'androidx.room:room-compiler:2.4.2'
+    // Testing dependencies
+    androidTestImplementation "junit:junit:4.13.2"
+    androidTestImplementation "androidx.test:core-ktx:1.4.0"
+    androidTestImplementation "androidx.test.ext:junit-ktx:1.1.3"
+    androidTestImplementation "androidx.test:rules:1.4.0"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.4.0"
+    // Hilt dependencies
+    implementation "com.google.dagger:hilt-android:2.41"
+    kapt "com.google.dagger:hilt-android-compiler:2.41"
+    //
+    implementation project(path: ':ktxExtension')
+}

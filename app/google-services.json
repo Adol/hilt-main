@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "437691842622",
+    "project_id": "fir-lean-4d98b",
+    "storage_bucket": "fir-lean-4d98b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437691842622:android:6578a6183225dd862e516f",
+        "android_client_info": {
+          "package_name": "com.example.android.hilt.lean"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437691842622-434e0utv1dcll549pn0kta077rcm96mm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1rdQ6jno7w1h5aKIxgjtXKJV2bmHcUV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437691842622-434e0utv1dcll549pn0kta077rcm96mm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:437691842622:android:959e50b61a1aa6232e516f",
+        "android_client_info": {
+          "package_name": "com.example.android.hilt.lean.Debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "437691842622-434e0utv1dcll549pn0kta077rcm96mm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1rdQ6jno7w1h5aKIxgjtXKJV2bmHcUV8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "437691842622-434e0utv1dcll549pn0kta077rcm96mm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
